@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block jumbotron %}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class = 'row'>
+        {% for product in products %}
+    <div class = "col-sm-6">
+          <div class = "thumbnail">
+                {% if product.productimage_set.all %}
+                    {% for item in product.productimage_set.all %}
+                <div style="margin: 0 auto;">
+
+
+                        <img  height="200px" width="200px" src = "{{ MEDIA_ROOT }}{{ item.image.url }}" />
+                </div>
+            </div>
+                    {% endfor %}
+                {% else %}
+            <div style="margin: 0 ;">
+                 <img class=img-responsive" height="200px" width="200px" src="{% static 'img/placeholder.jpg' %}"/>
+            </div>
+            {% endif %}
+            <div class = "caption" >
+                <h3><a href="{% url 'single_product' product.slug %}">{{ product.title}}</a></h3>
+                <div style="  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+">
+                    <p>{{ product.description }}This is a placeholder if no description </p>
+                </div>
+                <p>
+                    <a href = "{{ product.get_absolute_url }}" class = "btn btn-primary" role = "button">
+                                   View
+                    </a>
+                    <a href = "#" class = "btn btn-default" role = "button">
+                                  Button
+                    </a>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+{% endblock %}

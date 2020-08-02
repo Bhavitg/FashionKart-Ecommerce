@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-header">
+  <h1>{{ product.title }}</h1>
+   <hr>
+</div>
+
+<div class="row">
+
+    <div classs="col-sm-4">
+
+
+        {% for img in images %}
+            {% if img %}
+                <img class=img-responsive" src = "{{ MEDIA_ROOT }}{{ img.image.url }} " width="250px"/>
+            {% else %}
+                <img class="img-responsive" src="{% static 'img/placeholder.jpg' %}"/>
+            {% endif %}
+    </div>
+
+
+        {% endfor %}
+    <div class="col-sm-9" style="word-wrap: break-word;">
+        {{ product.description  }}
+    </div>
+</div>
+<div>
+
+<hr>
+<div class="row">
+    <div class="col-sm-6">
+        Price: Rs{{ product.price }}
+    </div>
+    <div class="col-sm-6">
+    <form class="formm pull-right"" method="GET" action="{% url 'add_to_cart' product.slug %}">
+        <input name="qty" , placeholder="Quantity" type="number" min="1" />
+        <br><br>
+        <input style="color:#FFFF; background-color:#30343b;border-radius: 4px;border: 2px solid black;" type="submit" value="Add To Cart">
+    </form>
+    <br>Free shipping with Rs499+ purchase
+    </div>
+</div>
+
+{% endblock %}

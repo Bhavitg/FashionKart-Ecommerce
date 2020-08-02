@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>searched for {{ query }}</h1>
+{{ products.title }}
+
+<table class="table">
+    <thead>
+    <th></th>
+    <th>Product</th>
+    </thead>
+    <tbody>
+    {% for product in products %}
+    {% for item in product.productimage_set.all %}
+    <tr>
+
+        <td >
+             {% if product.productimage_set.all %}
+                <img  height="160px" width="160px" src = "{{ MEDIA_ROOT }}{{ item.image.url }}" />
+            {% else %}
+                <img class=img-responsive" height="200px" width="200px" src="{% static 'img/placeholder.jpg' %}"/>
+            {% endif %}
+        </td>
+        <td>
+            <a href="{{ product.get_absolute_url }}">
+            {{ product }}</a>
+        </td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

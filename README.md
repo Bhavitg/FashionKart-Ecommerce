@@ -22,7 +22,7 @@ After adding our product to cart, we can click on cart which will show us the co
 
 ![ex4](https://github.com/Bhavitg/FashionKart-Ecommerce/blob/master/Screenshots/Cart.PNG)
  
-After proceeding to check out, we have to fill our card details and proceed to payment, for final submission of our order. 
+After proceeding to check out, we have to fill our card details and proceed to payment, for final submission of our order.  
 ![ex5](https://github.com/Bhavitg/FashionKart-Ecommerce/blob/master/Screenshots/Checkout.PNG)
 
 Before checking out, we need to login is required. If we don’t have an account we have to register to the website before proceeding further.  
